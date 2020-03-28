@@ -1,5 +1,5 @@
 import express from "express";
-import { OrderDbContext } from "../Data/order.data"
+import { OrderDbContext } from "../Data"
 
 export class OrderController {
     private _orderDbContext: OrderDbContext

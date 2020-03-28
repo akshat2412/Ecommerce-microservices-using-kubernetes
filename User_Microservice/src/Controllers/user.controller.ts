@@ -1,7 +1,6 @@
 import express from "express";
-import { UserDbContext } from "../Data/user.data"
+import { UserDbContext } from "../Data"
 import { UserApiResponse } from "../Shared/Models";
-import { resolve } from "dns";
 
 export class UserController {
     private _userDbContext: UserDbContext

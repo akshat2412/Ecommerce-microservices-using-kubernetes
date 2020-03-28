@@ -1,5 +1,5 @@
 import express from "express";
-import { UserDbContext } from "../Data";
+import { UserDbContext } from "../Data"
 import { UserApiResponse } from "../Shared/Models";
 
 export class UserController {

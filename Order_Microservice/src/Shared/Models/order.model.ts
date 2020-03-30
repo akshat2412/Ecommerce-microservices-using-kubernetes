@@ -1,6 +1,6 @@
 export interface Order {
     id: string;
-    userName: string;
+    username: string;
     status: string;
     productsList: Product[];
     amount: number;

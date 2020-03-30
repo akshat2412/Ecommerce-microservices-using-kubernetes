@@ -11,9 +11,15 @@ export class OrderDbContext {
     }
 
     // Returns the order information object based on passed parameter.
-    public GetOrder = async (orderId: string) => {
+    public getOrder = async (orderId: string) => {
         return this._orderList.orderList.find((order: Order) => {
             return order.id === orderId;
-        })
+        });
+    }
+
+    public getUserOrders = async (username: string) => {
+        return this._orderList.orderList.filter((order: Order) => {
+            return order.username === username;
+        });
     }
 }

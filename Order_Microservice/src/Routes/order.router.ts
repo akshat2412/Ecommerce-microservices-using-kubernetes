@@ -12,7 +12,7 @@ export class OrderRouter {
         
         // Define all the routes starting with '/user' here 
         this._routes = [
-            { type: 'get', path: '/:orderId', handlers: [this._orderController.GetOrder]},
+            { type: 'get', path: '/:username', handlers: [this._orderController.getUserOrders]},
         ];
         this.createRoutes();
     }

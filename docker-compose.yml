@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+    user-microservice:
+        image: akshatunofficial/user-microservice-basic
+        build: 
+            context: ./User_Microservice
+            dockerfile: Dockerfile
+        ports: 
+            - "8080:8080"
+        container_name: user-microservice
+        environment:
+            USER_MICROSERVICE_PORT: 8080
+    order-microservice:
+        image: akshatunofficial/order-microservice-basic
+        build: 
+            context: ./Order_Microservice
+            dockerfile: Dockerfile
+        ports: 
+            - "8085:8085"
+        container_name: order-microservice
+        environment:
+            ORDER_MICROSERVICE_PORT: 8085
+    catalog-microservice:
+        image: akshatunofficial/aggregator-microservice-basic
+        build:
+            context: ./Aggregator_Microservice
+            dockerfile: Dockerfile
+        ports:
+            - "8086:8086"
+        container_name: aggregator-microservice
+        environment:
+            AGGREGATOR_MICROSERVICE_PORT: 8086
+            USER_MICROSERVICE_URL: http://user-microservice:8080
+            ORDER_MICROSERVICE_URL: http://order-microservice:8085

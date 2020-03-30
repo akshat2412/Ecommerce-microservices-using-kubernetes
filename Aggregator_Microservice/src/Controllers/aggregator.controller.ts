@@ -8,22 +8,22 @@ export class AggregateController {
 
     public getOrderDetails = async (req: express.Request, res: express.Response) => {
         let username: string = req.params['username'];
-        let order: Order;
+        let orders: Order[];
         let user: User;
         return ApiService.getUser(username)
             .then((userData: any) => {
-                user = userData.data as User;
+                user = JSON.parse(userData.body) as User;
                 return;
             })
             .then(() => {
                 return ApiService.getUserOrders(username);
             })
             .then((orderData: any) => {
-                order = orderData.data as Order;
-                return {
+                orders = JSON.parse(orderData.body).orders as Order[];
+                return res.status(200).json({
                     user: user,
-                    orders: order
-                }
+                    orders: orders
+                });
             })
     }
 }
